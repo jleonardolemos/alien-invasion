@@ -26,3 +26,11 @@ There are two main inspirations for this game that i would like to turn this gam
 1. [Chicken invaders](https://www.youtube.com/watch?v=jM0v4VemWu8)
 
 2. [Strike Gunner](https://www.youtube.com/watch?v=Ay6132F5pcw)
+
+## Running the game
+
+```sh
+python3.8 alien_invasion.py
+```
+
+**OBS: you must install pygame with pip before running**
