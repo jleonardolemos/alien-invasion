@@ -8,6 +8,8 @@ I was learning python from the book ["Python Crash Course"](https://www.amazon.c
 
 ## RoadMap
 
+- [x] Add a requirements.txt
+- [x] Add a Pub/Sub feature in order to decouple the classes
 - [ ] Add some static analysis
 - [ ] Add tests
 - [ ] Add a CI pipeline

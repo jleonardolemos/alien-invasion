@@ -8,12 +8,15 @@ from alien import Alien
 from game_stats import GameStats
 from button import Button
 from scoreboard import Scoreboard
+from pubsub import pub
+from event_map import EventMap
 
 class AlienInvasion:
 
     def __init__(self):
         pygame.init()
         self.settings = Settings()
+        EventMap()
 
         self.screen = pygame.display.set_mode((
             self.settings.screen_width,
@@ -47,12 +50,9 @@ class AlienInvasion:
     def _check_events(self):
         for event in pygame.event.get():
 
-            #TODO add an decoupled event approach
+            pub.sendMessage("event-" + str(event.type), event=event);
 
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
 
             elif event.type == pygame.KEYUP:
