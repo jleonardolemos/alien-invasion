@@ -30,7 +30,15 @@ There are two main inspirations for this game that i would like to turn this gam
 ## Running the game
 
 ```sh
-python3.8 alien_invasion.py
+# Install dependencies
+pip install -r requirements.txt
+
+#Run the game
+python alien_invasion.py
 ```
+
+## Versions
+
+The game was tested with Python 3.8.10 and pip 20.0.2
 
 **OBS: you must install pygame with pip before running**
