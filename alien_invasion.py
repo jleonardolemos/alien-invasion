@@ -1,4 +1,3 @@
-import sys
 import pygame
 from time import sleep
 from settings import Settings
@@ -50,7 +49,12 @@ class AlienInvasion:
     def _check_events(self):
         for event in pygame.event.get():
 
-            pub.sendMessage("event-" + str(event.type), event=event);
+            if hasattr(event, 'key'):
+                event_name = "event-" + str(event.type) + "." + str(event.key)
+            else:
+                event_name = "event-" + str(event.type)
+
+            pub.sendMessage(event_name, event=event);
 
             if event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
@@ -69,8 +73,6 @@ class AlienInvasion:
             self.ship.moving_left = True
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
-        elif event.key == pygame.K_q:
-            sys.exit();
 
     def _check_keyup_events(self, event):
         if event.key == pygame.K_RIGHT: 

@@ -7,6 +7,6 @@ def quit_listener_caller(event=None):
     quit_listener(event)
 
 class EventMap:
-
     def __init__(self):
         pub.subscribe(quit_listener_caller, "event-" + str(pygame.QUIT))
+        pub.subscribe(quit_listener_caller, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_q))
