@@ -1,12 +1,12 @@
 from pubsub import pub
 import pygame
 from Listeners.quit_listener import QuitListener
-
-def quit_listener_caller(event=None):
-    quit_listener = QuitListener()
-    quit_listener(event)
+from Listeners.ship_movement import ShipMovement
 
 class EventMap:
-    def __init__(self):
-        pub.subscribe(quit_listener_caller, "event-" + str(pygame.QUIT))
-        pub.subscribe(quit_listener_caller, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_q))
+    def __init__(self, ai_game):
+        self.ship = ai_game.ship
+        pub.subscribe(QuitListener.build, "event-" + str(pygame.QUIT))
+        pub.subscribe(QuitListener.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_q))
+        pub.subscribe(ShipMovement.build, "event-" + str(pygame.KEYDOWN))
+        pub.subscribe(ShipMovement.build, "event-" + str(pygame.KEYUP))

@@ -15,7 +15,6 @@ class AlienInvasion:
     def __init__(self):
         pygame.init()
         self.settings = Settings()
-        EventMap()
 
         self.screen = pygame.display.set_mode((
             self.settings.screen_width,
@@ -36,6 +35,7 @@ class AlienInvasion:
         self._create_fleet()
 
         self.play_button = Button(self, "Play")
+        EventMap(self)
 
     def run_game(self):
         while True:
@@ -54,31 +54,22 @@ class AlienInvasion:
             else:
                 event_name = "event-" + str(event.type)
 
-            pub.sendMessage(event_name, event=event);
+            pub.sendMessage(
+                event_name,
+                event=event,
+                ship=self.ship
+            );
 
             if event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
-
-            elif event.type == pygame.KEYUP:
-                self._check_keyup_events(event)
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 self._check_play_button(mouse_pos)
 
     def _check_keydown_events(self, event):
-        if event.key == pygame.K_RIGHT:
-            self.ship.moving_right = True
-        elif event.key == pygame.K_LEFT:
-            self.ship.moving_left = True
-        elif event.key == pygame.K_SPACE:
+        if event.key == pygame.K_SPACE:
             self._fire_bullet()
-
-    def _check_keyup_events(self, event):
-        if event.key == pygame.K_RIGHT: 
-            self.ship.moving_right = False
-        elif event.key == pygame.K_LEFT:
-            self.ship.moving_left = False
 
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)

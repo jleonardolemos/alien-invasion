@@ -6,5 +6,9 @@ class BaseListener(ABC):
     def handle(self):
         pass
 
-    def __call__(self, event=None):
+    @abstractmethod
+    def build():
+        pass
+
+    def __call__(self):
         self.handle()
