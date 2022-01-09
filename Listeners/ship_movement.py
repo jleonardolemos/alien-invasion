@@ -21,6 +21,6 @@ class ShipMovement(BaseListener):
             elif self.event_key == pygame.K_LEFT:
                 self.ship.stopMovingLeft()
 
-    def build(event, ship=None):
-        listener = ShipMovement(event.key, event.type, ship)
+    def build(event, app=None):
+        listener = ShipMovement(event.key, event.type, app.ship)
         listener()

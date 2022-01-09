@@ -40,7 +40,7 @@ class AlienInvasion:
     def run_game(self):
         while True:
             self._check_events()
-            if self.stats.game_active:
+            if self.stats.is_active():
                 self.ship.update()
                 self._update_bullets()
                 self._update_aliens()
@@ -57,7 +57,7 @@ class AlienInvasion:
             pub.sendMessage(
                 event_name,
                 event=event,
-                ship=self.ship
+                app = self
             );
 
             if event.type == pygame.KEYDOWN:
@@ -82,7 +82,7 @@ class AlienInvasion:
 
         self.sb.show_score()
 
-        if not self.stats.game_active:
+        if not self.stats.is_active():
             self.play_button.draw_button()
 
         pygame.display.flip()
@@ -168,7 +168,7 @@ class AlienInvasion:
             self.ship.center_ship()
             sleep(0.5)
         else:
-            self.stats.game_active = False
+            self.stats.inactive()
             pygame.mouse.set_visible(True)
 
     def _check_aliens_bottom(self):
@@ -180,9 +180,7 @@ class AlienInvasion:
 
     def _check_play_button(self, mouse_pos):
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
-        if button_clicked and not self.stats.game_active:
-            self.stats.reset_stats()
-            self.stats.game_active = True
+        if button_clicked and not self.stats.is_active():
             self.sb.prep_score()
             self.sb.prep_level()
             self.sb.prep_ships()

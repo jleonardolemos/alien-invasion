@@ -1,6 +1,8 @@
 from pubsub import pub
 import pygame
+from Listeners.play_button import PlayButton
 from Listeners.quit_listener import QuitListener
+from Listeners.reset_game_stats import ResetGameStats
 from Listeners.ship_movement import ShipMovement
 
 class EventMap:
@@ -10,3 +12,5 @@ class EventMap:
         pub.subscribe(QuitListener.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_q))
         pub.subscribe(ShipMovement.build, "event-" + str(pygame.KEYDOWN))
         pub.subscribe(ShipMovement.build, "event-" + str(pygame.KEYUP))
+        pub.subscribe(PlayButton.build, "event-" + str(pygame.MOUSEBUTTONDOWN))
+        pub.subscribe(ResetGameStats.build, "play")

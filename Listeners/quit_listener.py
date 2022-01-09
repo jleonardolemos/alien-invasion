@@ -7,6 +7,6 @@ class QuitListener(BaseListener):
     def handle(self):
         sys.exit()
 
-    def build(event, ship=None):
+    def build(event, app=None):
         listener = QuitListener()
         listener()
