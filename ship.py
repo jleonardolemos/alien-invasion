@@ -1,5 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
+from bullet import Bullet
 
 class Ship(Sprite):
     def __init__(self, ai_game):
@@ -40,3 +41,9 @@ class Ship(Sprite):
     def center_ship(self):
         self.rect.midbottom = self.screen_rect.midbottom
         self.x = float(self.rect.x)
+
+    @staticmethod
+    def fire(app):
+        if len(app.bullets) < app.settings.bullets_allowed:
+            new_bullet = Bullet(app)
+            app.bullets.add(new_bullet)
