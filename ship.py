@@ -1,8 +1,9 @@
 import pygame
 from pygame.sprite import Sprite
 from bullet import Bullet
+from drawable import Drawable
 
-class Ship(Sprite):
+class Ship(Sprite, Drawable):
     def __init__(self, ai_game):
         super().__init__()
         self.screen = ai_game.screen
@@ -27,9 +28,6 @@ class Ship(Sprite):
     def stopMovingLeft(self):
         self.__moving_left = False
 
-    def blitme(self):
-        self.screen.blit(self.image, self.rect)
-
     def update(self):
         if self.__moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
@@ -47,3 +45,6 @@ class Ship(Sprite):
         if len(app.bullets) < app.settings.bullets_allowed:
             new_bullet = Bullet(app)
             app.bullets.add(new_bullet)
+
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)

@@ -3,12 +3,12 @@ from fleet import Fleet
 
 class CreateFleet(BaseListener):
 
-    def __init__(self, app):
-        self.app = app
+    def __init__(self, fleet):
+        self.fleet = fleet
 
     def handle(self):
-        Fleet.create(self.app)
+        self.fleet.create()
 
     def build(event, app=None):
-        listener = CreateFleet(app)
+        listener = CreateFleet(app.fleet)
         listener()

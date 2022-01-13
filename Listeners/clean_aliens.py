@@ -2,12 +2,12 @@ from Listeners.base_listener import BaseListener
 
 class CleanAliens(BaseListener):
 
-    def __init__(self, alien_group):
-        self.alien_group = alien_group
+    def __init__(self, fleet):
+        self.fleet = fleet
 
     def handle(self):
-        self.alien_group.empty();
+        self.fleet.clean();
 
     def build(event, app=None):
-        listener = CleanAliens(app.aliens)
+        listener = CleanAliens(app.fleet)
         listener()
