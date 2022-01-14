@@ -38,7 +38,8 @@ class AlienInvasion:
         self.drawable_components = [
             self.ship,
             self.sb,
-            self.fleet
+            self.fleet,
+            self.play_button
         ]
 
     def run_game(self):
@@ -69,9 +70,6 @@ class AlienInvasion:
         
         for drawable in self.drawable_components:
             drawable.draw(self.screen)
-
-        if not self.stats.is_active():
-            self.play_button.draw_button()
 
         pygame.display.flip()
 
