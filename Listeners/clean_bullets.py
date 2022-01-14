@@ -2,12 +2,12 @@ from Listeners.base_listener import BaseListener
 
 class CleanBullets(BaseListener):
 
-    def __init__(self, bullets_group):
-        self.bullets_group = bullets_group
+    def __init__(self, ship):
+        self.ship = ship
 
     def handle(self):
-        self.bullets_group.empty();
+        self.ship.clean_bullets();
 
     def build(event, app=None):
-        listener = CleanBullets(app.bullets)
+        listener = CleanBullets(app.ship)
         listener()

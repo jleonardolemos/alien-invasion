@@ -1,14 +1,13 @@
 from Listeners.base_listener import BaseListener
-from ship import Ship
 
 class FireBullet(BaseListener):
 
-    def __init__(self, app):
-        self.app = app
+    def __init__(self, ship):
+        self.ship = ship
 
     def handle(self):
-        Ship.fire(self.app)
+        self.ship.fire()
 
     def build(event, app=None):
-        listener = FireBullet(app)
+        listener = FireBullet(app.ship)
         listener()

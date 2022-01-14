@@ -2,26 +2,27 @@ import pygame
 from pygame.sprite import Sprite
 
 class Bullet(Sprite):
-    def __init__(self, ai_game):
+    def __init__(self, position, width, height, color, speed):
         """Create a bullet object at the ship's current position."""
         super().__init__()
-        self.screen = ai_game.screen
-        self.settings = ai_game.settings
-        self.color = self.settings.bullet_color
+
         self.rect = pygame.Rect(
-            0, 0, self.settings.bullet_width, self.settings.bullet_height
+            0, 0, width, height
         )
 
-        self.rect.midtop = ai_game.ship.rect.midtop
+        self.color = color
+        self.speed = speed
+
+        self.rect.midtop = position
         self.y = float(self.rect.y)
 
     def update(self):
-        self.y -= self.settings.bullet_speed
+        self.y -= self.speed
         self.rect.y = self.y
 
-    def draw_bullet(self):
+    def draw_bullet(self, screen):
         pygame.draw.rect(
-            self.screen,
+            screen,
             self.color,
             self.rect
         )
