@@ -11,6 +11,10 @@ class Fleet(Drawable):
     def draw(self, surface):
         self.aliens.draw(surface)
 
+    def update(self):
+        self.check_fleet_edges()
+        self.aliens.update()
+
     def check_fleet_edges(self):
         for alien in self.aliens.sprites():
             if alien.check_edges():

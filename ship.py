@@ -2,8 +2,9 @@ import pygame
 from pygame.sprite import Sprite
 from bullet import Bullet
 from drawable import Drawable
+from updateable import Updateable
 
-class Ship(Sprite, Drawable):
+class Ship(Sprite, Drawable, Updateable):
     def __init__(self, ai_game):
         super().__init__()
         self.screen = ai_game.screen
@@ -36,6 +37,7 @@ class Ship(Sprite, Drawable):
             self.x -= self.settings.ship_speed
         
         self.rect.x = self.x
+        self.bullets.update()
 
     def center_ship(self):
         self.rect.midbottom = self.screen_rect.midbottom
