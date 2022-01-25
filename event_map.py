@@ -12,7 +12,12 @@ from Listeners.fire_bullet import FireBullet
 from Listeners.increase_score_by_alien_killed import IncreaseScoreByAlienKilled
 from Listeners.initialize_dynamic_settings import InitializeDynamicSettings
 from Listeners.level_up import LevelUp
+from Listeners.play_alien_deth_sound import PlayAlienDethSound
 from Listeners.play_button import PlayButton
+from Listeners.play_fire_sound import PlayFireSound
+from Listeners.play_game_over_sound import PlayGameOverSound
+from Listeners.play_level_up_sound import PlayLevelUpSound
+from Listeners.play_ship_explosion_sound import PlayShipExplosionSound
 from Listeners.quit_listener import QuitListener
 from Listeners.remove_lost_bullet import RemoveLostBullet
 from Listeners.reset_game_stats import ResetGameStats
@@ -28,6 +33,7 @@ class EventMap:
         pub.subscribe(ShipMovement.build, "event-" + str(pygame.KEYUP))
         pub.subscribe(PlayButton.build, "event-" + str(pygame.MOUSEBUTTONDOWN))
         pub.subscribe(FireBullet.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_SPACE))
+        pub.subscribe(PlayFireSound.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_SPACE))
         pub.subscribe(ResetGameStats.build, "play")
         pub.subscribe(ResetScoreBoard.build, "play")
         pub.subscribe(CleanAliens.build, "play")
@@ -40,5 +46,9 @@ class EventMap:
         pub.subscribe(CheckAliensBottom.build, "move-completed")
         pub.subscribe(RemoveLostBullet.build, "move-completed")
         pub.subscribe(IncreaseScoreByAlienKilled.build, "aliens-killed")
+        pub.subscribe(PlayAlienDethSound.build, "aliens-killed")
         pub.subscribe(LevelUp.build, "aliens-killed")
+        pub.subscribe(PlayShipExplosionSound.build, "ship-hit")
         pub.subscribe(Die.build, "ship-hit")
+        pub.subscribe(PlayGameOverSound.build, "game-over")
+        pub.subscribe(PlayLevelUpSound.build, "level-up")

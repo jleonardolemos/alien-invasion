@@ -1,4 +1,5 @@
 from Listeners.base_listener import BaseListener
+from pubsub import pub
 
 class LevelUp(BaseListener):
 
@@ -12,6 +13,7 @@ class LevelUp(BaseListener):
             self.app.settings.increase_speed()
             self.app.stats.level += 1
             self.app.sb.prep_level()
+            pub.sendMessage('level-up', app = self.app)
 
     def build(app, collisions=None):
         listener = LevelUp(app)

@@ -1,6 +1,7 @@
 from Listeners.base_listener import BaseListener
 import pygame
 from time import sleep
+from pubsub import pub
 
 class Die(BaseListener):
 
@@ -17,6 +18,7 @@ class Die(BaseListener):
             self.app.ship.center_ship()
             sleep(0.5)
         else:
+            pub.sendMessage('game-over', app = self.app)
             self.app.stats.inactive()
             pygame.mouse.set_visible(True)
 
