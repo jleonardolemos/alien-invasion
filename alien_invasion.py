@@ -79,8 +79,10 @@ class AlienInvasion:
             );
 
     def _draw(self):
-        self.screen.fill(self.settings.bg_color)
-        
+
+        background_image = pygame.image.load(self.settings.bg_image).convert()
+        self.screen.blit(background_image, [0, 0])        
+
         for drawable in self.drawable_components:
             drawable.draw(self.screen)
 
