@@ -50,7 +50,7 @@ class Ship(Sprite, Drawable, Updateable):
                 self.rect.midtop,
                 self.settings.bullet_width,
                 self.settings.bullet_height,
-                self.settings.bullet_color,
+                self.settings.bullet_image,
                 self.settings.bullet_speed
             )
 
