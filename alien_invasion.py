@@ -1,4 +1,5 @@
 import pygame
+from game.guns.start_gun import StartGun
 from fleet import Fleet
 from settings import Settings
 from ship import Ship
@@ -29,6 +30,7 @@ class AlienInvasion:
         self.sb = Scoreboard(self)
         self.ship = Ship(self)
         self.fleet = Fleet(self)
+        self.gun = StartGun(self);
         self.fleet.create()
 
         self.play_button = Button(self, "Play")
@@ -38,12 +40,14 @@ class AlienInvasion:
             self.ship,
             self.sb,
             self.fleet,
-            self.play_button
+            self.play_button,
+            self.gun,
         ]
 
         self.updateable_components = [
             self.ship,
             self.fleet,
+            self.gun,
         ]
 
     def run_game(self):

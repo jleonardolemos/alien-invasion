@@ -8,7 +8,7 @@ class LevelUp(BaseListener):
 
     def handle(self):
         if not self.app.fleet.aliens:
-            self.app.ship.bullets.empty()
+            self.app.gun.clean_bullets()
             self.app.fleet.create()
             self.app.settings.increase_speed()
             self.app.stats.level += 1

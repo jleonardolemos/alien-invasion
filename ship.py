@@ -1,6 +1,5 @@
 import pygame
 from pygame.sprite import Sprite
-from bullet import Bullet
 from drawable import Drawable
 from updateable import Updateable
 
@@ -16,7 +15,6 @@ class Ship(Sprite, Drawable, Updateable):
         self.__moving_left = False
         self.settings = ai_game.settings
         self.x = float(self.rect.x)
-        self.bullets = pygame.sprite.Group()
 
     def startMovingRight(self):
         self.__moving_right = True
@@ -37,30 +35,10 @@ class Ship(Sprite, Drawable, Updateable):
             self.x -= self.settings.ship_speed
         
         self.rect.x = self.x
-        self.bullets.update()
 
     def center_ship(self):
         self.rect.midbottom = self.screen_rect.midbottom
         self.x = float(self.rect.x)
 
-    def fire(self):
-        if len(self.bullets) < self.settings.bullets_allowed:
-
-            new_bullet = Bullet(
-                self.rect.midtop,
-                self.settings.bullet_width,
-                self.settings.bullet_height,
-                self.settings.bullet_image,
-                self.settings.bullet_speed
-            )
-
-            self.bullets.add(new_bullet)
-
-    def clean_bullets(self):
-        self.bullets.empty()
-
     def draw(self, surface):
         surface.blit(self.image, self.rect)
-        
-        for bullet in self.bullets:
-            bullet.draw_bullet(self.screen)
