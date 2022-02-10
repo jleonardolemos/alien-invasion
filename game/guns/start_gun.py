@@ -6,19 +6,19 @@ from updateable import Updateable
 class StartGun(Drawable, Updateable):
 
     def __init__(self, app):
-        self.bullets = pygame.sprite.Group()
+        self.__bullets = pygame.sprite.Group()
         self.app = app
         self.bullets_allowed = 3
 
     def draw(self, surface):
-        for bullet in self.bullets:
+        for bullet in self.__bullets:
             bullet.draw_bullet(surface)
 
     def update(self):
-        self.bullets.update()
+        self.__bullets.update()
 
     def fire(self):
-        if len(self.bullets) < self.bullets_allowed:
+        if len(self.__bullets) < self.bullets_allowed:
 
             new_bullet = Bullet(
                 self.app.ship.rect.midtop,
@@ -28,7 +28,16 @@ class StartGun(Drawable, Updateable):
                 self.app.settings.bullet_speed
             )
 
-            self.bullets.add(new_bullet)
+            self.__bullets.add(new_bullet)
 
     def clean_bullets(self):
-        self.bullets.empty()
+        self.__bullets.empty()
+
+    def get_bullets(self):
+        return self.__bullets
+
+    def get_bullets_copy(self):
+        return self.__bullets.copy()
+
+    def remove_bullet(self, bullet):
+        return self.__bullets.remove(bullet)

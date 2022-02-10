@@ -9,7 +9,7 @@ class CheckAlienGotShot(BaseListener):
 
     def handle(self):
         collisions = pygame.sprite.groupcollide(
-            self.app.gun.bullets,
+            self.app.gun.get_bullets(),
             self.app.fleet.aliens,
             True,
             True
