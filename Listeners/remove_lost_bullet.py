@@ -6,9 +6,9 @@ class RemoveLostBullet(BaseListener):
         self.app = app
 
     def handle(self):
-        for bullet in self.app.ship.bullets.copy():
+        for bullet in self.app.gun.get_bullets_copy():
             if bullet.rect.bottom <= 0:
-                self.app.ship.bullets.remove(bullet)
+                self.app.gun.remove_bullet(bullet)
 
     def build(app):
         listener = RemoveLostBullet(app)

@@ -1,4 +1,5 @@
 import pygame
+from game.guns.start_gun import StartGun
 from fleet import Fleet
 from settings import Settings
 from ship import Ship
@@ -29,22 +30,25 @@ class AlienInvasion:
         self.sb = Scoreboard(self)
         self.ship = Ship(self)
         self.fleet = Fleet(self)
+        self.gun = StartGun(self);
         self.fleet.create()
 
         self.play_button = Button(self, "Play")
         EventMap(self)
 
-        self.drawable_components = [
-            self.ship,
-            self.sb,
-            self.fleet,
-            self.play_button
-        ]
+        self.drawable_components = {
+            "ship": self.ship,
+            "sb": self.sb,
+            "fleet": self.fleet,
+            "play_button": self.play_button,
+            "gun": self.gun,
+        }
 
-        self.updateable_components = [
-            self.ship,
-            self.fleet,
-        ]
+        self.updateable_components = {
+            "ship": self.ship,
+            "fleet": self.fleet,
+            "gun": self.gun,
+        }
 
     def run_game(self):
         while True:
@@ -61,7 +65,7 @@ class AlienInvasion:
     def _update(self):
         if self.stats.is_active():
             
-            for updateable in self.updateable_components:
+            for updateable in self.updateable_components.values():
                 updateable.update()
 
     def _check_events(self):
@@ -83,10 +87,15 @@ class AlienInvasion:
         background_image = pygame.image.load(self.settings.bg_image).convert()
         self.screen.blit(background_image, [0, 0])        
 
-        for drawable in self.drawable_components:
+        for drawable in self.drawable_components.values():
             drawable.draw(self.screen)
 
         pygame.display.flip()
+
+    def change_gun(self, gun):
+        self.gun = gun
+        self.drawable_components["gun"] = self.gun
+        self.updateable_components["gun"] = self.gun
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
