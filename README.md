@@ -15,7 +15,7 @@ I was learning python from the book ["Python Crash Course"](https://www.amazon.c
 - [ ] Add a CI pipeline
 - [ ] Add Brazilian Metal Songs
 - [ ] Add ability to increase the ship
-- [ ] Add ability to increase the ship weapon
+- [x] Add ability to increase the ship weapon
 - [ ] Add another aliens more stronger and faster
 - [ ] Add ability to earn lives
 - [ ] Publish on Ubuntu Software
