@@ -2,13 +2,9 @@ import pygame
 from pygame.sprite import Sprite
 
 class Bullet(Sprite):
-    def __init__(self, position, width, height, image, path):
+    def __init__(self, position, image, path):
         """Create a bullet object at the ship's current position."""
         super().__init__()
-
-        self.rect = pygame.Rect(
-            0, 0, width, height
-        )
 
         self.image = pygame.image.load(image)
         self.rect = self.image.get_rect()

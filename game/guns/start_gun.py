@@ -1,17 +1,16 @@
 import pygame
 from bullet import Bullet
 from drawable import Drawable
+from game.guns.base_gun import BaseGun
 from game.paths.straight_path import StraightPath
 from updateable import Updateable
 
-class StartGun(Drawable, Updateable):
+class StartGun(Drawable, Updateable, BaseGun):
 
     def __init__(self, app):
         self.__bullets = pygame.sprite.Group()
         self.app = app
-        self.bullets_allowed = 3
-        self.bullet_width = 3
-        self.bullet_height = 15
+        self.bullets_allowed = 2
         self.bullet_image = 'images/bullet_yellow.bmp'
 
     def draw(self, surface):
@@ -26,8 +25,6 @@ class StartGun(Drawable, Updateable):
 
             new_bullet = Bullet(
                 self.app.ship.rect.midtop,
-                self.bullet_width,
-                self.bullet_height,
                 self.bullet_image,
                 StraightPath()
             )
