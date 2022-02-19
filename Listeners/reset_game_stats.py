@@ -9,6 +9,6 @@ class ResetGameStats(BaseListener):
         self.stats.reset_stats()
         self.stats.active()
 
-    def build(event, app=None):
+    def build(app=None):
         listener = ResetGameStats(app.stats)
         listener()

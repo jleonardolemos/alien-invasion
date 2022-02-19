@@ -22,6 +22,7 @@ class MainMenu:
         self.menu.add.button('Quit', pygame_menu.events.EXIT)
 
     def game_loop(self):
+        self.menu.enable()
         self.menu.mainloop(self.surface)
 
     def start_the_game(self) -> None:

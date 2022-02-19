@@ -26,14 +26,12 @@ class AlienInvasion:
         self.gun = StartGun(self);
         self.fleet.create()
 
-        self.play_button = Button(self, "Play")
         EventMap(self)
 
         self.drawable_components = {
             "ship": self.ship,
             "sb": self.sb,
             "fleet": self.fleet,
-            "play_button": self.play_button,
             "gun": self.gun,
         }
 

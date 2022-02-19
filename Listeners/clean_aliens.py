@@ -8,6 +8,6 @@ class CleanAliens(BaseListener):
     def handle(self):
         self.fleet.clean();
 
-    def build(event, app=None):
+    def build(app=None):
         listener = CleanAliens(app.fleet)
         listener()

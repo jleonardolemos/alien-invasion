@@ -15,6 +15,8 @@ surface = pygame.display.set_mode((
 ai = AlienInvasion(game_state, settings, surface)
 main_menu = MainMenu(game_state, surface, settings)
 
+pygame.mouse.set_visible(False)
+
 while True:
     if game_state.has_game_just_started():
         main_menu.game_loop()

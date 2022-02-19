@@ -21,6 +21,7 @@ I was learning python from the book ["Python Crash Course"](https://www.amazon.c
 - [ ] Add ability to earn lives
 - [ ] Publish on Ubuntu Software
 - [ ] Publish on Steam(we can dream!!!)
+- [ ] Create Engine Package, EventMap Location!
 
 ## Inpirations
 

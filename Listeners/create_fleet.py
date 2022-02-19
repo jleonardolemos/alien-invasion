@@ -9,6 +9,6 @@ class CreateFleet(BaseListener):
     def handle(self):
         self.fleet.create()
 
-    def build(event, app=None):
+    def build(app=None):
         listener = CreateFleet(app.fleet)
         listener()
