@@ -10,15 +10,12 @@ from event_map import EventMap
 
 class AlienInvasion:
 
-    def __init__(self, game_state, settings):
+    def __init__(self, game_state, settings, screen):
         pygame.init()
         self.settings = settings
         self.game_state = game_state
 
-        self.screen = pygame.display.set_mode((
-            self.settings.screen_width,
-            self.settings.screen_height
-        ), pygame.NOFRAME)
+        self.screen = screen
 
         pygame.display.set_caption('Alien Invaders')
 

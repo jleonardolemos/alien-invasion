@@ -1,3 +1,4 @@
+import pygame
 from alien_invasion import AlienInvasion
 from game_state import GameState
 from menus.main_menu import MainMenu
@@ -5,8 +6,14 @@ from settings import Settings
 
 settings = Settings()
 game_state = GameState()
-ai = AlienInvasion(game_state, settings)
-main_menu = MainMenu(game_state, ai.screen, settings)
+
+surface = pygame.display.set_mode((
+    settings.screen_width,
+    settings.screen_height
+), pygame.NOFRAME)
+
+ai = AlienInvasion(game_state, settings, surface)
+main_menu = MainMenu(game_state, surface, settings)
 
 while True:
     if game_state.has_game_just_started():
