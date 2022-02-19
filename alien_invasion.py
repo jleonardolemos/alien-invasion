@@ -1,7 +1,6 @@
 import pygame
 from game.guns.start_gun import StartGun
 from fleet import Fleet
-from settings import Settings
 from ship import Ship
 from game_stats import GameStats
 from button import Button
@@ -11,18 +10,15 @@ from event_map import EventMap
 
 class AlienInvasion:
 
-    def __init__(self):
+    def __init__(self, game_state, settings):
         pygame.init()
-        self.settings = Settings()
+        self.settings = settings
+        self.game_state = game_state
 
         self.screen = pygame.display.set_mode((
             self.settings.screen_width,
             self.settings.screen_height
-        ))
-
-        # self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        # self.settings.screen_width = self.screen.get_rect().width
-        # self.settings.screen_height = self.screen.get_rect().height
+        ), pygame.NOFRAME)
 
         pygame.display.set_caption('Alien Invaders')
 
@@ -50,8 +46,8 @@ class AlienInvasion:
             "gun": self.gun,
         }
 
-    def run_game(self):
-        while True:
+    def game_loop(self):
+        while self.game_state.is_game_running():
             self._check_events()
             self._update()
 
@@ -96,8 +92,3 @@ class AlienInvasion:
         self.gun = gun
         self.drawable_components["gun"] = self.gun
         self.updateable_components["gun"] = self.gun
-
-if __name__ == '__main__':
-    # Make a game instance, and run the game.
-    ai = AlienInvasion()
-    ai.run_game()
