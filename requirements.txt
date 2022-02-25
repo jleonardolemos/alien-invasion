@@ -1,2 +1,5 @@
 pygame==2.1.2
+pygame-menu==4.2.5
+pyperclip==1.8.2
 Pypubsub==4.0.3
+typing-extensions==4.1.1
