@@ -44,3 +44,9 @@ python alien_invasion.py
 The game was tested with Python 3.8.10 and pip 20.0.2
 
 **OBS: you must install pygame with pip before running**
+
+## Building with Pyinstaller
+
+```sh
+pyinstaller main.py --add-data images:images
+```
