@@ -22,6 +22,7 @@ from Listeners.remove_lost_bullet import RemoveLostBullet
 from Listeners.reset_game_stats import ResetGameStats
 from Listeners.reset_score_board import ResetScoreBoard
 from Listeners.ship_movement import ShipMovement
+from Listeners.pause import Pause
 from game.listeners.upgrade_gun import UpgradeGun
 
 class EventMap:
@@ -34,6 +35,7 @@ class EventMap:
         pub.subscribe(FireBullet.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_SPACE))
         pub.subscribe(PlayFireSound.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_SPACE))
         pub.subscribe(UpgradeGun.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_a))
+        pub.subscribe(Pause.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_ESCAPE))
         pub.subscribe(CheckAlienGotShot.build, "move-completed")
         pub.subscribe(CheckShipHit.build, "move-completed")
         pub.subscribe(CheckAliensBottom.build, "move-completed")

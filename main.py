@@ -2,6 +2,7 @@ import pygame
 from alien_invasion import AlienInvasion
 from game_state import GameState
 from menus.main_menu import MainMenu
+from menus.start_menu import StartMenu
 from settings import Settings
 
 settings = Settings()
@@ -14,11 +15,14 @@ surface = pygame.display.set_mode((
 
 ai = AlienInvasion(game_state, settings, surface)
 main_menu = MainMenu(game_state, surface, settings)
+start_menu = StartMenu(game_state, surface, settings)
 
 pygame.mouse.set_visible(False)
 
 while True:
     if game_state.has_game_just_started():
         main_menu.game_loop()
+    elif game_state.is_game_paused():
+        start_menu.game_loop()
     else:
         ai.game_loop()
