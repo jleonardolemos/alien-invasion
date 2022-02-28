@@ -10,6 +10,6 @@ class ResetScoreBoard(BaseListener):
         self.sb.prep_level()
         self.sb.prep_ships()
 
-    def build(event, app=None):
+    def build(app=None):
         listener = ResetScoreBoard(app.sb)
         listener()

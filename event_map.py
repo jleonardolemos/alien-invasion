@@ -13,7 +13,6 @@ from Listeners.increase_score_by_alien_killed import IncreaseScoreByAlienKilled
 from Listeners.initialize_dynamic_settings import InitializeDynamicSettings
 from Listeners.level_up import LevelUp
 from Listeners.play_alien_deth_sound import PlayAlienDethSound
-from Listeners.play_button import PlayButton
 from Listeners.play_fire_sound import PlayFireSound
 from Listeners.play_game_over_sound import PlayGameOverSound
 from Listeners.play_level_up_sound import PlayLevelUpSound
@@ -23,6 +22,7 @@ from Listeners.remove_lost_bullet import RemoveLostBullet
 from Listeners.reset_game_stats import ResetGameStats
 from Listeners.reset_score_board import ResetScoreBoard
 from Listeners.ship_movement import ShipMovement
+from Listeners.pause import Pause
 from game.listeners.upgrade_gun import UpgradeGun
 
 class EventMap:
@@ -32,17 +32,10 @@ class EventMap:
         pub.subscribe(QuitListener.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_q))
         pub.subscribe(ShipMovement.build, "event-" + str(pygame.KEYDOWN))
         pub.subscribe(ShipMovement.build, "event-" + str(pygame.KEYUP))
-        pub.subscribe(PlayButton.build, "event-" + str(pygame.MOUSEBUTTONDOWN))
         pub.subscribe(FireBullet.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_SPACE))
         pub.subscribe(PlayFireSound.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_SPACE))
         pub.subscribe(UpgradeGun.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_a))
-        pub.subscribe(ResetGameStats.build, "play")
-        pub.subscribe(ResetScoreBoard.build, "play")
-        pub.subscribe(CleanAliens.build, "play")
-        pub.subscribe(CleanBullets.build, "play")
-        pub.subscribe(CreateFleet.build, "play")
-        pub.subscribe(CentralizeShip.build, "play")
-        pub.subscribe(InitializeDynamicSettings.build, "play")
+        pub.subscribe(Pause.build, "event-" + str(pygame.KEYDOWN) + "." + str(pygame.K_ESCAPE))
         pub.subscribe(CheckAlienGotShot.build, "move-completed")
         pub.subscribe(CheckShipHit.build, "move-completed")
         pub.subscribe(CheckAliensBottom.build, "move-completed")
@@ -53,4 +46,11 @@ class EventMap:
         pub.subscribe(PlayShipExplosionSound.build, "ship-hit")
         pub.subscribe(Die.build, "ship-hit")
         pub.subscribe(PlayGameOverSound.build, "game-over")
+        pub.subscribe(ResetGameStats.build, "game-over")
+        pub.subscribe(ResetScoreBoard.build, "game-over")
+        pub.subscribe(CleanAliens.build, "game-over")
+        pub.subscribe(CleanBullets.build, "game-over")
+        pub.subscribe(CreateFleet.build, "game-over")
+        pub.subscribe(CentralizeShip.build, "game-over")
+        pub.subscribe(InitializeDynamicSettings.build, "game-over")
         pub.subscribe(PlayLevelUpSound.build, "level-up")

@@ -8,6 +8,6 @@ class InitializeDynamicSettings(BaseListener):
     def handle(self):
         self.settings.initialize_dynamic_settings()
 
-    def build(event, app=None):
+    def build(app=None):
         listener = InitializeDynamicSettings(app.settings)
         listener()

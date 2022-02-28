@@ -10,6 +10,8 @@ class PlayGameOverSound(BaseListener):
             effect = pygame.mixer.Sound('Sounds/gameover.wav')
             effect.play()
 
+        self.app.game_state.restart_game()
+
     def build(app):
         listener = PlayGameOverSound(app)
         listener()

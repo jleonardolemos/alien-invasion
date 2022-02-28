@@ -10,6 +10,7 @@ I was learning python from the book ["Python Crash Course"](https://www.amazon.c
 
 - [x] Add a requirements.txt
 - [x] Add a Pub/Sub feature in order to decouple the classes
+- [x] Add interactive menus
 - [ ] Add some static analysis
 - [ ] Add tests
 - [ ] Add a CI pipeline
@@ -20,6 +21,7 @@ I was learning python from the book ["Python Crash Course"](https://www.amazon.c
 - [ ] Add ability to earn lives
 - [ ] Publish on Ubuntu Software
 - [ ] Publish on Steam(we can dream!!!)
+- [ ] Create Engine Package, EventMap Location!
 
 ## Inpirations
 

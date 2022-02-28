@@ -8,6 +8,6 @@ class CleanBullets(BaseListener):
     def handle(self):
         self.gun.clean_bullets();
 
-    def build(event, app=None):
+    def build(app=None):
         listener = CleanBullets(app.gun)
         listener()

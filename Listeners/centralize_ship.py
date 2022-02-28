@@ -8,6 +8,6 @@ class CentralizeShip(BaseListener):
     def handle(self):
         self.ship.center_ship();
 
-    def build(event, app=None):
+    def build(app=None):
         listener = CentralizeShip(app.ship)
         listener()

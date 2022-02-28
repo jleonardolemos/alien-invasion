@@ -19,8 +19,6 @@ class Die(BaseListener):
             sleep(0.5)
         else:
             pub.sendMessage('game-over', app = self.app)
-            self.app.stats.inactive()
-            pygame.mouse.set_visible(True)
 
     def build(app):
         listener = Die(app)
