@@ -1,5 +1,9 @@
+altgraph==0.17.2
+coverage==6.3.2
 pygame==2.1.2
 pygame-menu==4.2.5
+pyinstaller==4.9
+pyinstaller-hooks-contrib==2022.2
 pyperclip==1.8.2
 Pypubsub==4.0.3
 typing-extensions==4.1.1
