@@ -47,6 +47,11 @@ The game was tested with Python 3.8.10 and pip 20.0.2
 
 **OBS: you must install pygame with pip before running**
 
+## Running tests
+
+```sh
+python -m unittest
+```
 ## Building with Pyinstaller
 
 ```sh
