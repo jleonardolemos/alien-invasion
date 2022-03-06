@@ -12,7 +12,7 @@ I was learning python from the book ["Python Crash Course"](https://www.amazon.c
 - [x] Add a Pub/Sub feature in order to decouple the classes
 - [x] Add interactive menus
 - [ ] Add some static analysis
-- [ ] Add tests
+- [x] Add tests
 - [ ] Add a CI pipeline
 - [ ] Add Brazilian Metal Songs
 - [ ] Add ability to increase the ship
