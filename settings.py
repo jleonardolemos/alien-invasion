@@ -1,6 +1,11 @@
+from os import path, makedirs
+
 class Settings:
     """A class to store all settings for Alien Invasion."""
-    def __init__(self):
+    def __init__(self, settings_dir="~"):
+        self.settings_dir = settings_dir
+        self.__load_config(self.settings_dir)
+
         """Initialize the game's settings."""
         # Player settings
         self.player_name = ""
@@ -38,3 +43,7 @@ class Settings:
         self.ship_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale
         self.alien_points = int(self.alien_points * self.score_scale)
+    
+    def __load_config(self, settings_dir = "~"):
+        dir = path.expanduser(self.settings_dir) + "/l30/alien"
+        makedirs(dir, exist_ok=True)
